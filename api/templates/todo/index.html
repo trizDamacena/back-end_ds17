@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+  </head>
+  <body>
+    <main>
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Sobrenome</th>
+                <th scope="col">Nacionalidade</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for autor in autores %}
+                    <tr>
+                        <th scope="row">{{autor.id}}</th>
+                        <td>{{autor.nome}}</td>
+                        <td>{{autor.sobrenome}}</td>
+                        <td>{{autor.nation}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+    </main>
+  </body>
+</html>
+
+
+
+
+
+
