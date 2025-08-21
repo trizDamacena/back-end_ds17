@@ -24,7 +24,7 @@ class Editora(models.Model):
 
 class Livro(models.Model):
     titulo = models.CharField(max_length=50)
-    subtitulo = models.CharField(max_length=255)
+    subtitulo = models.CharField(max_length=255, null=True, blank=True)
     autor = models.ForeignKey(Autor, on_delete=models.CASCADE)
     editora = models.ForeignKey(Editora, on_delete=models.CASCADE)
     isbn = models.CharField(max_length=255)
@@ -40,4 +40,9 @@ class Livro(models.Model):
     peso = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
-        return f"{self.titulo} {self.subtitulo}"
+
+        if self.subtitulo != "":
+            return f"{self.titulo} {self.subtitulo}"
+        else:
+            return f"{self.titulo}"
+        

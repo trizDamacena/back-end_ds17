@@ -1,24 +1,48 @@
 from django.shortcuts import render
-from rest_framework.generics import ListCreateAPIView
+from rest_framework.generics import ListCreateAPIView, DestroyAPIView, RetrieveDestroyAPIView
 from .models import Autor, Editora, Livro
 from .serializers import AutorSerializers, EditoraSerializers, LivroSerializers
 from rest_framework.decorators import api_view #bibliotecas para a metódo com decoretor
 from rest_framework.response import Response
 from rest_framework import status
 
-
+#Autores-----------------------------------------
 class AutoresView(ListCreateAPIView):
     queryset = Autor.objects.all() 
     serializer_class = AutorSerializers
 
+class AutoresDetailView(RetrieveDestroyAPIView):
+    queryset = Autor.objects.all()
+    serializer_class = AutorSerializers
+
+
+#Editora------------------------------------------
 class EditorasView(ListCreateAPIView):
     queryset = Editora.objects.all()
     serializer_class = EditoraSerializers
 
+class EditorasDetailView(RetrieveDestroyAPIView):
+    queryset = Editora.objects.all()
+    serializer_class = EditoraSerializers
+
+
+#Livro------------------------------------------
 class LivrosView(ListCreateAPIView):
     queryset = Livro.objects.all()
     serializer_class = LivroSerializers
 
+class LivrosDetailView(RetrieveDestroyAPIView):
+    queryset = Livro.objects.all()
+    serializer_class = LivroSerializers
+
+#----------------------------------------------
+class ExcluirAutorView(DestroyAPIView): #feito por mim
+    queryset = Autor.objects.all()
+    serializer_class = AutorSerializers
+
+
+
+#outros métodos
 def visualizacao(request):
     autores = Autor.objects.all()
     return render(request,"todo/index.html", {"autores": autores})
