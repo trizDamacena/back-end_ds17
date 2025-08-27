@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework.generics import ListCreateAPIView, DestroyAPIView, RetrieveDestroyAPIView
+from rest_framework.generics import ListCreateAPIView, DestroyAPIView, RetrieveDestroyAPIView, RetrieveUpdateDestroyAPIView
 from .models import Autor, Editora, Livro
 from .serializers import AutorSerializers, EditoraSerializers, LivroSerializers
 from rest_framework.decorators import api_view #bibliotecas para a metódo com decoretor
@@ -11,7 +11,7 @@ class AutoresView(ListCreateAPIView):
     queryset = Autor.objects.all() 
     serializer_class = AutorSerializers
 
-class AutoresDetailView(RetrieveDestroyAPIView):
+class AutoresDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Autor.objects.all()
     serializer_class = AutorSerializers
 
@@ -21,7 +21,7 @@ class EditorasView(ListCreateAPIView):
     queryset = Editora.objects.all()
     serializer_class = EditoraSerializers
 
-class EditorasDetailView(RetrieveDestroyAPIView):
+class EditorasDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Editora.objects.all()
     serializer_class = EditoraSerializers
 
@@ -31,7 +31,7 @@ class LivrosView(ListCreateAPIView):
     queryset = Livro.objects.all()
     serializer_class = LivroSerializers
 
-class LivrosDetailView(RetrieveDestroyAPIView):
+class LivrosDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Livro.objects.all()
     serializer_class = LivroSerializers
 
