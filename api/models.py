@@ -1,14 +1,14 @@
 from django.db import models
 
 class Autor(models.Model):
-    nome_autor = models.CharField(max_length=255)
-    sobrenome_autor = models.CharField(max_length=255)
-    data_nascimento_autor = models.DateField(null=False, blank=True)
-    nation_autor = models.CharField(max_length=30, null=True, blank=True)
-    biografia_autor = models.TextField(null=True, blank=True)  
+    nome = models.CharField(max_length=255)
+    sobrenome = models.CharField(max_length=255)
+    nasc = models.DateField(null=False, blank=True)
+    nacion = models.CharField(max_length=30, null=True, blank=True)
+    biog = models.TextField(null=True, blank=True)  
 
     def __str__(self):
-        return f"{self.nome_autor} {self.sobrenome_autor}"
+        return f"{self.nome} {self.sobrenome}"
 
 class Editora(models.Model):
     nome_editora = models.CharField(max_length=255)
