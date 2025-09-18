@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <title>Bootstrap demo</title>
+  </head>
+  <body>
+    <main>
+        <table class="table table-striped-columns">
+            <thead>
+                <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Sobrenome</th>
+                <th scope="col">Nacionalidade</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for autor in autores %}
+                    <tr>
+                        <th scope="row">{{autor.id}}</th>
+                        <td>{{autor.nome}}</td>
+                        <td>{{autor.sobrenome}}</td>
+                        <td>{{autor.nation}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+  </body>
+</html>
+
+
+
+
+
+
