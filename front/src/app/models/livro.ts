@@ -3,6 +3,7 @@ export interface Livro{
     titulo: string;
     subtitulo: string | null;
     autor: string;
+    editora: string;
     isbn: string;
     descricao: string;
     idioma: string;

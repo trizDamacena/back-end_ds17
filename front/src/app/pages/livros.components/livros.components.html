@@ -1,1 +1,34 @@
-<p>livros.components works!</p>
+<section style="max-width:900px;margin:2rem auto;padding:0 1rem">
+      <h1>Livros</h1>
+
+      @if (carregando()) {
+        <p>Carregando…</p>
+      } @else if (erro()) {
+        <p style="color:#c62828">{{ erro() }}</p>
+      } @else {
+        <ul style="padding-left:1.25rem">
+          @for (a of livros(); track a.id) {
+            <li style="margin:.25rem 0">
+              <strong>{{ a.titulo }} {{ a.subtitulo }}</strong><br> 
+              <em>Autor: {{a.autor}}</em><br>
+              <em>Editora: {{a.editora}}</em><br>
+              <em>ISBN: {{a.isbn}}</em><br>
+              <em>Descrição: {{a.descricao}}</em><br>
+              <em>Idioma: {{a.idioma}}</em><br>
+              <em>Ano de publicação {{a.ano_publicacao}}</em><br>
+              <em>Total de páginas: {{a.paginas}}</em><br>
+              <em>Preço: R$ {{a.preco}}</em><br>
+              <em>Estoque {{a.estoque}}</em><br>
+              <em>Desconto: {{a.desconto}}</em><br>
+              <em>Disponível: {{a.disponivel}}</em><br>
+              <em>Dimensões: {{a.dimensoes}}</em><br>
+              <em>Peso: {{a.peso}}</em><br>
+            </li>
+          }
+        </ul>
+      }
+
+      <nav style="margin-top:1rem">
+        <a routerLink="/">Voltar ao início</a>
+      </nav>
+    </section>
