@@ -5,7 +5,7 @@ import { Autor } from '../../models/autor';
 import { AuthService } from '../../services/auth.services';
 
 @Component({
-  standalone: true,
+  standalone: true, //que não tem teste
   imports: [RouterLink],
   templateUrl: './authors.components.html',
   styleUrls: ['./authors.components.css']

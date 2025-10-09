@@ -10,3 +10,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient()
   ]
 };
+
+
+// Nesse arquivo é configurado as rotas, no provideRouter,  e suas regras, no provideHttpClient. 
