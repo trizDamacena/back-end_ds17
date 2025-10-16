@@ -7,10 +7,11 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.filters import SearchFilter
-from .filters import AutorFilters
+from rest_framework.filters import SearchFilter, OrderingFilter
 
-#Autores-----------------------------------------
+from .filters import LivroFilter
+
+#================ Autores ================
 class AutoresView(ListCreateAPIView):
     queryset = Autor.objects.all() 
     serializer_class = AutorSerializers
@@ -25,7 +26,7 @@ class AutoresDetailView(RetrieveUpdateDestroyAPIView):
     serializer_class = AutorSerializers
 
 
-#Editora------------------------------------------
+#================Editora================
 class EditorasView(ListCreateAPIView):
     queryset = Editora.objects.all()
     serializer_class = EditoraSerializers
@@ -36,17 +37,21 @@ class EditorasDetailView(RetrieveUpdateDestroyAPIView):
     serializer_class = EditoraSerializers
 
 
-#Livro------------------------------------------
+#================Livro================
 class LivrosView(ListCreateAPIView):
-    queryset = Livro.objects.all()
+    queryset = Livro.objects.all().select_related('autor').order_by('id') #é responsável pela pesquisa
     serializer_class = LivroSerializers
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter] #1: pesquisa exata, 2: Pesquisa não exata, 3: Arquivo externo
+    filterset_class = LivroFilter
+    seacrh_fields = ['titulo', 'autor__nome', 'autor__sobrenomea']
+    order_fieldsc = ['id', 'titulo']
     #permission_classes = [IsAuthenticated]
 
 class LivrosDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Livro.objects.all()
     serializer_class = LivroSerializers
 
-#----------------------------------------------
+#================
 class ExcluirAutorView(DestroyAPIView): #feito por mim
     queryset = Autor.objects.all()
     serializer_class = AutorSerializers

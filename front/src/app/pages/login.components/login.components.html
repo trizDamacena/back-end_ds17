@@ -2,17 +2,13 @@
     <h1 style="margin:0 0 1rem">Entrar</h1>
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
-      <div style="display:flex; flex-direction:column; gap:.5rem">
-        <label>
-          Usuário
-          <input formControlName="username" autocomplete="username" />
-        </label>
+      <div class="formulario">
+        <label>Usuário</label>
+        <input formControlName="username" autocomplete="username" />
 
-        <label>
-          Senha
-          <input type="password" formControlName="password" autocomplete="current-password" />
-        </label>
-
+        <label>Senha</label>
+        <input type="password" formControlName="password" autocomplete="current-password" />
+        
         <button type="submit" [disabled]="form.invalid || loading()">Entrar</button>
       </div>
     </form>

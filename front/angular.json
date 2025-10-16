@@ -72,7 +72,9 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/icon.ico",
+              "src/assets"
             ],
             "styles": [
               "src/styles.css"
