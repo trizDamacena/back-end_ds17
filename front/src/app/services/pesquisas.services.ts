@@ -18,7 +18,7 @@ export class PesquisasServices {
   private base = environment.apiBase
   
 
-  lista(q?: LivroQuery): Observable<Pesquisa[]>{
+  listar(q?: LivroQuery): Observable<Pesquisa[]>{
     let params = new HttpParams()
     if(q){
       Object.entries(q).forEach(([k, v]) =>{

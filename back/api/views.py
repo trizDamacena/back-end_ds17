@@ -9,7 +9,7 @@ from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
 
-from .filters import LivroFilter
+from .filters import LivroFilter, AutorFilter
 
 #================ Autores ================
 class AutoresView(ListCreateAPIView):
@@ -43,9 +43,9 @@ class LivrosView(ListCreateAPIView):
     serializer_class = LivroSerializers
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter] #1: pesquisa exata, 2: Pesquisa não exata, 3: Arquivo externo
     filterset_class = LivroFilter
-    seacrh_fields = ['titulo', 'autor__nome', 'autor__sobrenomea']
+    seacrh_fields = ['titulo', 'autor__nome', 'autor__sobrenome']
     order_fieldsc = ['id', 'titulo']
-    #permission_classes = [IsAuthenticated]
+    
 
 class LivrosDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Livro.objects.all()
