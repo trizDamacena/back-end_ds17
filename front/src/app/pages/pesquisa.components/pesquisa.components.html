@@ -1,0 +1,10 @@
+
+<input type="text" [(ngModel)]="termoBusca" (input)="onDigitado()" placeholder="Buscar produtos...">
+<div *ngIf="produtos.length > 0">
+    <div *ngFor="let produto of produtos">
+        <h3>{{ livros }}</h3>
+    </div>
+</div>
+<div *ngIf="produtos.length === 0 && termoBusca.length > 0">
+    <p>Nenhum resultado encontrado.</p>
+</div>
